@@ -26,8 +26,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Pull
         run: docker pull aneeshmsomayaji/ppp:latest
+      - name: build pulled
+        run: docker build -t prime .
       - name: Run image pulled
-        run: docker run -d aneeshmsomayaji/ppp:latest
+        run: docker run -d prime
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
