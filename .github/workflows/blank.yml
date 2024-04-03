@@ -15,21 +15,22 @@ jobs:
   # This workflow contains a single job called "build"
   deploy:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checout 
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+      - name: sETUP 
+        uses: docker/setup-buildx-action@v1
 
       # Runs a single command using the runners shell
       - name: Pull
         run: docker pull aneeshmsomayaji/ppp:latest
-      - name: build pulled
-        run: docker build -t prime .
+      
       - name: Run image pulled
-        run: docker run -d prime
+        run: docker run -d aneeshmsomayaji/ppp:latest
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
